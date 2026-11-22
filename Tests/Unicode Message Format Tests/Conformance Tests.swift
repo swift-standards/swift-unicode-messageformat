@@ -15,12 +15,12 @@ extension `Conformance Tests`.Test.Unit {
     @Test(arguments: Conformance.suites.map { $0.name })
     func `every test of the CLDR 49 conformance suite passes`(name: String) throws {
         let json = try #require(Conformance.suites.first { $0.name == name }?.json)
-        let root = try RFC_8259.Decode.parse([Byte](utf8: json))
-        let defaults = root["defaultTestProperties"]?.object ?? RFC_8259.Object()
+        let root = try IETF.RFC.`8259`.Decode.parse([Byte](utf8: json))
+        let defaults = root["defaultTestProperties"]?.object ?? IETF.RFC.`8259`.Object()
         let tests = try #require(root["tests"]?.array)
         var count = 0
         for test in tests {
-            func property(_ key: String) -> RFC_8259.Value? {
+            func property(_ key: String) -> IETF.RFC.`8259`.Value? {
                 test[key] ?? defaults[key]
             }
             let source = try #require(property("src")?.string)

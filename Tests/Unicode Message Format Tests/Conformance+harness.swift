@@ -91,9 +91,9 @@ extension Conformance {
         }
     }
 
-    static func expected(_ part: RFC_8259.Value) -> [String: String] {
+    static func expected(_ part: IETF.RFC.`8259`.Value) -> [String: String] {
         var fields: [String: String] = [:]
-        for (key, value) in part.object ?? RFC_8259.Object() where key != "locale" {
+        for (key, value) in part.object ?? IETF.RFC.`8259`.Object() where key != "locale" {
             switch key {
             case "parts":
                 let parts = value.array.map { Array($0) } ?? []
@@ -110,7 +110,7 @@ extension Conformance {
         return fields
     }
 
-    static func value(_ json: RFC_8259.Value) throws(CLDR.Number.Decimal.Error) -> Message.Value? {
+    static func value(_ json: IETF.RFC.`8259`.Value) throws(CLDR.Number.Decimal.Error) -> Message.Value? {
         if let text = json.string {
             return .string(text)
         }
@@ -123,10 +123,10 @@ extension Conformance {
 
 extension Conformance {
 
-    static func total() throws(RFC_8259.Error) -> Int {
+    static func total() throws(IETF.RFC.`8259`.Error) -> Int {
         var total = 0
         for suite in suites {
-            let root = try RFC_8259.Decode.parse([Byte](utf8: suite.json))
+            let root = try IETF.RFC.`8259`.Decode.parse([Byte](utf8: suite.json))
             total += root["tests"]?.array.map { Array($0).count } ?? 0
         }
         return total
