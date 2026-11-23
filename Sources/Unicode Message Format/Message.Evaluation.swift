@@ -8,7 +8,7 @@ extension Message {
 
         let arguments: [String: Value]
 
-        let locale: BCP47.LanguageTag
+        let locale: BCP47.Tag
 
         let functions: Functions
 
@@ -16,7 +16,7 @@ extension Message {
 
         var memo: [String: Outcome]
 
-        init(message: Message, arguments: [String: Value], locale: BCP47.LanguageTag, functions: Functions) {
+        init(message: Message, arguments: [String: Value], locale: BCP47.Tag, functions: Functions) {
             self.message = message
             self.arguments = arguments
             self.locale = locale

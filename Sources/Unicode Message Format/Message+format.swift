@@ -4,7 +4,7 @@ extension Message {
 
     public func format(
         _ arguments: [String: Message.Value] = [:],
-        in locale: BCP47.LanguageTag,
+        in locale: BCP47.Tag,
         functions: Message.Functions = .default,
         isolation: Message.Isolation = .default
     ) -> Message.Output {
@@ -18,7 +18,7 @@ extension Message {
         return Message.Output(parts: parts, errors: evaluation.errors)
     }
 
-    public func callAsFunction(_ arguments: [String: Message.Value] = [:], in locale: BCP47.LanguageTag) -> String {
+    public func callAsFunction(_ arguments: [String: Message.Value] = [:], in locale: BCP47.Tag) -> String {
         format(arguments, in: locale).text
     }
 }

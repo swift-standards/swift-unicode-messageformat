@@ -13,7 +13,7 @@ extension Message.Handler {
 
         public let options: [String: Message.Resolved.Option]
 
-        public let locale: BCP47.LanguageTag
+        public let locale: BCP47.Tag
 
         public let direction: CLDR.Direction?
     }

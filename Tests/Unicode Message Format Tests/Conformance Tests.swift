@@ -43,7 +43,7 @@ extension `Conformance Tests`.Test.Unit {
                 }
                 arguments[parameterName] = value
             }
-            let locale = try BCP47.LanguageTag(property("locale")?.string ?? "en-US")
+            let locale = try BCP47.Tag(property("locale")?.string ?? "en-US")
             let isolation: Message.Isolation = property("bidiIsolation")?.string == "default" ? .default : .disabled
             let output = message.format(arguments, in: locale, functions: Conformance.functions, isolation: isolation)
             if let expected = property("exp")?.string {
